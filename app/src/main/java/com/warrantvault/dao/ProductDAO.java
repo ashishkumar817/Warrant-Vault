@@ -270,12 +270,24 @@ public class ProductDAO {
 
     public boolean deleteProduct(long productId) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        int rows = db.delete(
-                DatabaseHelper.TABLE_PRODUCTS,
-                DatabaseHelper.COL_PROD_ID + " = ?",
-                new String[]{String.valueOf(productId)}
-        );
-        return rows > 0;
+        db.beginTransaction();
+        boolean success = false;
+        try {
+            db.delete(DatabaseHelper.TABLE_WARRANTIES, DatabaseHelper.COL_WARRANTY_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
+            db.delete(DatabaseHelper.TABLE_DOCUMENTS, DatabaseHelper.COL_DOC_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
+            db.delete(DatabaseHelper.TABLE_SERVICE_RECORDS, DatabaseHelper.COL_SR_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
+            db.delete(DatabaseHelper.TABLE_NOTIFICATIONS, DatabaseHelper.COL_NOTIF_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
+            int rows = db.delete(
+                    DatabaseHelper.TABLE_PRODUCTS,
+                    DatabaseHelper.COL_PROD_ID + " = ?",
+                    new String[]{String.valueOf(productId)}
+            );
+            db.setTransactionSuccessful();
+            success = rows > 0;
+        } finally {
+            db.endTransaction();
+        }
+        return success;
     }
 
     private Product mapCursorToProduct(Cursor cursor) {

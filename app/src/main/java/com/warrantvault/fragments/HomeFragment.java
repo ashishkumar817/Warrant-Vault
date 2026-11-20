@@ -62,6 +62,14 @@ public class HomeFragment extends Fragment {
         loadHomeData();
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            loadHomeData();
+        }
+    }
+
     private void setupGreeting() {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
@@ -148,7 +156,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void loadHomeData() {
+    public void loadHomeData() {
+        if (binding == null) return;
         long userId = sessionManager.getUserId();
 
         // 1. Unread notifications count

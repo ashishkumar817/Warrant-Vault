@@ -65,6 +65,14 @@ public class VaultFragment extends Fragment {
         loadVaultProducts();
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            loadVaultProducts();
+        }
+    }
+
     private void setupAdapter() {
         adapter = new ProductAdapter(new ProductAdapter.OnProductClickListener() {
             @Override
@@ -152,6 +160,7 @@ public class VaultFragment extends Fragment {
     }
 
     public void loadVaultProducts() {
+        if (binding == null) return;
         long userId = sessionManager.getUserId();
         List<Product> list;
 

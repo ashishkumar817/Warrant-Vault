@@ -57,6 +57,14 @@ public class AlertsFragment extends Fragment {
         loadAlerts();
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            loadAlerts();
+        }
+    }
+
     private void setupAdapter() {
         adapter = new NotificationAdapter(item -> {
             notificationDAO.markAsRead(item.getId());
@@ -100,6 +108,7 @@ public class AlertsFragment extends Fragment {
     }
 
     public void loadAlerts() {
+        if (binding == null) return;
         long userId = sessionManager.getUserId();
         List<NotificationItem> all = notificationDAO.getAllNotifications(userId);
         List<NotificationItem> filtered = new ArrayList<>();

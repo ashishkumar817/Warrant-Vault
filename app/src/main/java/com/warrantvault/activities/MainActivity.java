@@ -109,6 +109,15 @@ public class MainActivity extends AppCompatActivity {
                     .show(target)
                     .commit();
             activeFragment = target;
+
+            // Immediately refresh newly activated tab
+            if (target instanceof HomeFragment) {
+                ((HomeFragment) target).loadHomeData();
+            } else if (target instanceof VaultFragment) {
+                ((VaultFragment) target).loadVaultProducts();
+            } else if (target instanceof AlertsFragment) {
+                ((AlertsFragment) target).loadAlerts();
+            }
         }
     }
 
