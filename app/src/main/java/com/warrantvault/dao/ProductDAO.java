@@ -273,7 +273,7 @@ public class ProductDAO {
         db.beginTransaction();
         boolean success = false;
         try {
-            db.delete(DatabaseHelper.TABLE_WARRANTIES, DatabaseHelper.COL_WARRANTY_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
+            db.delete(DatabaseHelper.TABLE_WARRANTIES, DatabaseHelper.COL_WARR_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
             db.delete(DatabaseHelper.TABLE_DOCUMENTS, DatabaseHelper.COL_DOC_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
             db.delete(DatabaseHelper.TABLE_SERVICE_RECORDS, DatabaseHelper.COL_SR_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
             db.delete(DatabaseHelper.TABLE_NOTIFICATIONS, DatabaseHelper.COL_NOTIF_PRODUCT_ID + " = ?", new String[]{String.valueOf(productId)});
