@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">Warrant Vault</string>
+    <string name="app_subtitle">Digital Warranty &amp; Bill Manager</string>
+    <string name="app_tagline">Your Purchases. Protected.</string>
+    <string name="splash_footer">Keep Track. Never Miss a Warranty.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
+
+    <string name="onboarding_title_1">Store Your Bills Digitally</string>
+    <string name="onboarding_desc_1">Keep all your purchase bills and invoices organized in one secure place.</string>
+
+    <string name="onboarding_title_2">Track Every Warranty</string>
+    <string name="onboarding_desc_2">Know exactly when your product warranties expire and never miss important dates.</string>
+
+    <string name="onboarding_title_3">Never Lose Important Documents</string>
+    <string name="onboarding_desc_3">Keep invoices, warranty cards, manuals and service records together.</string>
+
+    <!-- Auth -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="login_subtitle">Log in to continue managing your warranties</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="create_account_subtitle">Start managing and securing your warranties</string>
+    <string name="login">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="terms_agreement">I agree to the Terms &amp; Privacy Policy</string>
+    <string name="already_have_account">Already have an account? Log In</string>
+    <string name="dont_have_account">Don\'t have an account? Sign Up</string>
+    <string name="reset_password_title">Reset Password</string>
+    <string name="reset_password_btn">Update Password</string>
+    <string name="new_password_hint">New password (min 6 characters)</string>
+
+    <!-- Main Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_vault">Vault</string>
+    <string name="nav_add">Add</string>
+    <string name="nav_alerts">Alerts</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Home Dashboard -->
+    <string name="search_hint">Search products, bills...</string>
+    <string name="total_products">Total Products</string>
+    <string name="active_warranties">Active</string>
+    <string name="expiring_soon">Expiring Soon</string>
+    <string name="expired">Expired</string>
+    <string name="add_product_cta">Add Product</string>
+    <string name="section_expiring_soon">Warranty Expiring Soon</string>
+    <string name="section_recently_added">Recently Added</string>
+    <string name="see_all">See All</string>
+
+    <!-- Vault -->
+    <string name="my_vault">My Vault</string>
+    <string name="no_products_title">No Products Found</string>
+    <string name="no_products_desc">You haven\'t added any products or bills yet. Tap + to add your first product.</string>
+
+    <!-- Add Product Sheet -->
+    <string name="add_product_title">Add Product</string>
+    <string name="scan_bill_title">Scan Bill</string>
+    <string name="scan_bill_desc">Take a photo and automatically extract product details.</string>
+    <string name="upload_bill_title">Upload Bill</string>
+    <string name="upload_bill_desc">Upload an existing bill or invoice image from device.</string>
+    <string name="add_manually_title">Add Manually</string>
+    <string name="add_manually_desc">Enter product and warranty information yourself.</string>
+
+    <!-- Verify / Add Product Form -->
+    <string name="verify_details_title">Verify Details</string>
+    <string name="ocr_banner_notice">We extracted these details. Please verify before saving.</string>
+    <string name="product_name_hint">Product Name *</string>
+    <string name="brand_hint">Brand</string>
+    <string name="category_hint">Category *</string>
+    <string name="model_number_hint">Model Number</string>
+    <string name="serial_number_hint">Serial Number</string>
+    <string name="purchase_date_hint">Purchase Date *</string>
+    <string name="purchase_price_hint">Purchase Price (₹)</string>
+    <string name="seller_hint">Seller / Store Name</string>
+    <string name="invoice_number_hint">Invoice Number</string>
+    <string name="warranty_period_hint">Warranty Period</string>
+    <string name="warranty_end_date_hint">Warranty Expiry Date</string>
+    <string name="save_product">Save Product</string>
+
+    <!-- Product Details -->
+    <string name="warranty_active">WARRANTY ACTIVE</string>
+    <string name="warranty_expiring_soon">EXPIRING SOON</string>
+    <string name="warranty_expired">EXPIRED</string>
+    <string name="warranty_none">NO WARRANTY</string>
+    <string name="purchase_details">Purchase Details</string>
+    <string name="warranty_details">Warranty Details</string>
+    <string name="documents_section">Documents</string>
+    <string name="service_history_section">Service History</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="add_service_record">+ Add Service Record</string>
+    <string name="add_document">+ Add Document</string>
+    <string name="delete_product">Delete Product</string>
+
+    <!-- Alerts -->
+    <string name="alerts_title">Alerts</string>
+    <string name="tab_upcoming">Upcoming</string>
+    <string name="tab_past">Past</string>
+    <string name="tab_all">All</string>
+
+    <!-- Profile -->
+    <string name="settings">Settings</string>
+    <string name="notification_settings">Push Notifications</string>
+    <string name="reminder_30">Remind 30 days before expiry</string>
+    <string name="reminder_14">Remind 14 days before expiry</string>
+    <string name="reminder_7">Remind 7 days before expiry</string>
+    <string name="reminder_1">Remind 1 day before expiry</string>
+    <string name="backup_restore">Backup / Restore</string>
+    <string name="about_app">About Warrant Vault</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="logout">Log Out</string>
+</resources>

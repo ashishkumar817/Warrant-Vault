@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface_white"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="2dp"
+    app:strokeColor="#E2E8F0"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp">
+
+        <FrameLayout
+            android:id="@+id/flAlertIndicator"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:background="@drawable/bg_icon_squircle_amber"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivAlertBell"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="Alert Icon"
+                android:src="@drawable/ic_bell"
+                app:tint="@color/status_expiring" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvAlertTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-bold"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="15.5sp"
+            app:layout_constraintEnd_toStartOf="@+id/tvAlertDate"
+            app:layout_constraintStart_toEndOf="@+id/flAlertIndicator"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dell UltraSharp Monitor" />
+
+        <TextView
+            android:id="@+id/tvAlertMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/status_expiring_text"
+            android:textSize="12.5sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivAlertArrow"
+            app:layout_constraintStart_toEndOf="@+id/flAlertIndicator"
+            app:layout_constraintTop_toBottomOf="@+id/tvAlertTitle"
+            tools:text="Warranty expires in 12 days" />
+
+        <TextView
+            android:id="@+id/tvAlertDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/text_secondary"
+            android:textSize="11.5sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="15 Oct 2026" />
+
+        <ImageView
+            android:id="@+id/ivAlertArrow"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Open alert"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="#94A3B8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

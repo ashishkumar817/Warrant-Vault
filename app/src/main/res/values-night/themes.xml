@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Ensure high-contrast, crystal clear UI even on devices with system dark mode enabled -->
+    <style name="Theme.WarrantVault" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/brand_blue</item>
+        <item name="colorPrimaryVariant">@color/brand_navy</item>
+        <item name="colorOnPrimary">@color/surface_white</item>
+        
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/brand_navy</item>
+        <item name="colorSecondaryVariant">@color/brand_navy_dark</item>
+        <item name="colorOnSecondary">@color/surface_white</item>
+
+        <!-- Status bar and Navigation bar -->
+        <item name="android:statusBarColor">@color/surface_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/surface_white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <!-- Backgrounds -->
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:colorBackground">@color/background_light</item>
+
+        <!-- Typography & Form Text Defaults -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:editTextColor">@color/text_primary</item>
+        <item name="editTextColor">@color/text_primary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Component Overrides -->
+        <item name="textInputStyle">@style/Widget.WarrantVault.TextInputLayout</item>
+    </style>
+
+    <style name="Theme.WarrantVault.Splash" parent="Theme.WarrantVault">
+        <item name="android:windowBackground">@color/surface_white</item>
+        <item name="android:statusBarColor">@color/surface_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+</resources>

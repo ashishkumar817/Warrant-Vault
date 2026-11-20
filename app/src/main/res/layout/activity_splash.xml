@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/splashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_white">
+
+    <!-- Center Logo & Branding Block -->
+    <LinearLayout
+        android:id="@+id/llBranding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/llFooter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45">
+
+        <!-- Official Warrant Vault Logo -->
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_warrant_vault" />
+
+        <TextView
+            android:id="@+id/tvBrandTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.02"
+            android:text="@string/app_name"
+            android:textColor="@color/brand_navy"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvBrandSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.04"
+            android:text="@string/app_subtitle"
+            android:textColor="@color/brand_blue"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Footer Tagline & Progress -->
+    <LinearLayout
+        android:id="@+id/llFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ProgressBar
+            android:id="@+id/splashProgress"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="16dp"
+            android:indeterminateTint="@color/brand_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.02"
+            android:text="@string/splash_footer"
+            android:textColor="@color/text_muted"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

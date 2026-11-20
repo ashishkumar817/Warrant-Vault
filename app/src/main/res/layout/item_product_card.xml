@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/surface_white"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="2dp"
+    app:strokeColor="#E2E8F0"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp">
+
+        <!-- Category / Product Icon Container -->
+        <FrameLayout
+            android:id="@+id/flIconContainer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_icon_squircle_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivProductIcon"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:contentDescription="Product Icon"
+                android:src="@drawable/ic_cat_electronics"
+                app:tint="@color/brand_blue" />
+        </FrameLayout>
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/tvProductName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="6dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-bold"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="15.5sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnMoreOptions"
+            app:layout_constraintStart_toEndOf="@+id/flIconContainer"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Samsung Galaxy S25" />
+
+        <!-- Brand • Category Subtitle -->
+        <TextView
+            android:id="@+id/tvBrandCategory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="6dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="12.5sp"
+            app:layout_constraintEnd_toStartOf="@+id/btnMoreOptions"
+            app:layout_constraintStart_toEndOf="@+id/flIconContainer"
+            app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+            tools:text="Samsung • Mobiles" />
+
+        <!-- Status Badge & Days Remaining Row -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/ivArrow"
+            app:layout_constraintStart_toEndOf="@+id/flIconContainer"
+            app:layout_constraintTop_toBottomOf="@+id/tvBrandCategory">
+
+            <!-- Status Pill Badge -->
+            <TextView
+                android:id="@+id/tvWarrantyStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_active"
+                android:fontFamily="sans-serif-bold"
+                android:letterSpacing="0.02"
+                android:textColor="@color/status_active_text"
+                android:textSize="10.5sp"
+                tools:text="WARRANTY ACTIVE" />
+
+            <!-- Days Remaining Countdown -->
+            <TextView
+                android:id="@+id/tvDaysRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                tools:text="298 days left" />
+        </LinearLayout>
+
+        <!-- Three dots / overflow menu button -->
+        <ImageButton
+            android:id="@+id/btnMoreOptions"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="More options"
+            android:padding="6dp"
+            android:src="@drawable/ic_more_vert"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/text_secondary" />
+
+        <!-- Arrow Chevron -->
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="Open details"
+            android:src="@drawable/ic_arrow_forward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="#94A3B8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

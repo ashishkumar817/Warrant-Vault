@@ -1,0 +1,123 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WarrantVault" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/brand_blue</item>
+        <item name="colorPrimaryVariant">@color/brand_navy</item>
+        <item name="colorOnPrimary">@color/surface_white</item>
+        
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/brand_navy</item>
+        <item name="colorSecondaryVariant">@color/brand_navy_dark</item>
+        <item name="colorOnSecondary">@color/surface_white</item>
+
+        <!-- Status bar and Navigation bar -->
+        <item name="android:statusBarColor">@color/surface_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/surface_white</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+
+        <!-- Backgrounds -->
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:colorBackground">@color/background_light</item>
+
+        <!-- Typography & Form Text Defaults -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:editTextColor">@color/text_primary</item>
+        <item name="editTextColor">@color/text_primary</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Component Overrides -->
+        <item name="textInputStyle">@style/Widget.WarrantVault.TextInputLayout</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+    <style name="Theme.WarrantVault.Splash" parent="Theme.WarrantVault">
+        <item name="android:windowBackground">@color/surface_white</item>
+        <item name="android:statusBarColor">@color/surface_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <!-- Modern Rounded TextInputLayout Style -->
+    <style name="Widget.WarrantVault.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxStrokeColor">@color/sl_box_stroke</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/sl_text_input_hint</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="placeholderTextColor">@color/text_hint</item>
+        <item name="boxBackgroundColor">@color/surface_white</item>
+        <item name="endIconTint">@color/text_secondary</item>
+        <item name="startIconTint">@color/brand_blue</item>
+    </style>
+
+    <!-- Modern Rounded Dropdown TextInputLayout Style -->
+    <style name="Widget.WarrantVault.TextInputLayout.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxStrokeColor">@color/sl_box_stroke</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="hintTextColor">@color/sl_text_input_hint</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="placeholderTextColor">@color/text_hint</item>
+        <item name="boxBackgroundColor">@color/surface_white</item>
+        <item name="endIconTint">@color/brand_blue</item>
+    </style>
+
+    <!-- Primary Pill / Rounded Button -->
+    <style name="Widget.WarrantVault.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/brand_blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- Secondary Outlined Button -->
+    <style name="Widget.WarrantVault.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/brand_blue</item>
+        <item name="strokeColor">@color/brand_blue</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Destructive Outlined Button -->
+    <style name="Widget.WarrantVault.Button.Outlined.Destructive" parent="Widget.WarrantVault.Button.Outlined">
+        <item name="android:textColor">@color/status_expired</item>
+        <item name="strokeColor">@color/status_expired</item>
+    </style>
+
+    <!-- Rounded CardView Style -->
+    <style name="Widget.WarrantVault.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">18dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/card_stroke</item>
+        <item name="cardBackgroundColor">@color/surface_card</item>
+    </style>
+
+    <!-- Bottom Sheet Dialog Theme -->
+    <style name="Theme.WarrantVault.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.WarrantVault.BottomSheet</item>
+    </style>
+
+    <style name="Widget.WarrantVault.BottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottom_sheet</item>
+    </style>
+</resources>

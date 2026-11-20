@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="280dp"
+    android:height="240dp"
+    android:viewportWidth="280"
+    android:viewportHeight="240">
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#EBF3FF"
+        android:pathData="M140,20a100,100 0,1 0,0 200a100,100 0,1 0,0 -200z" />
+
+    <!-- Blue Cloud Top -->
+    <path
+        android:fillColor="#0066FF"
+        android:pathData="M165,65 a20,20 0 0,0 -38,-6 a15,15 0 0,0 -22,13 a18,18 0 0,0 2,35 h58 a18,18 0 0,0 0,-42 z" />
+
+    <!-- Back Document -->
+    <path
+        android:fillColor="#DBEAFE"
+        android:pathData="M80,95 h80 a8,8 0 0 1 8,8 v84 a8,8 0 0 1 -8,8 h-80 a8,8 0 0 1 -8,-8 v-84 a8,8 0 0 1 8,-8 z" />
+
+    <!-- Front Document -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M110,110 h80 a8,8 0 0 1 8,8 v84 a8,8 0 0 1 -8,8 h-80 a8,8 0 0 1 -8,-8 v-84 a8,8 0 0 1 8,-8 z" />
+    
+    <!-- Document Lines -->
+    <path
+        android:fillColor="#0066FF"
+        android:pathData="M125,130 h50 v4 h-50 z" />
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M125,142 h36 v4 h-36 z" />
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M125,154 h44 v4 h-44 z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M125,166 h25 v4 h-25 z" />
+</vector>
