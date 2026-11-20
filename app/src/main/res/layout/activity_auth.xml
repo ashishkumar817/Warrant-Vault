@@ -158,6 +158,57 @@
                 android:layout_marginTop="14dp"
                 android:text="@string/login" />
 
+            <!-- OR Divider -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="OR"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+            </LinearLayout>
+
+            <!-- Continue with Google Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoogleSignIn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="Continue with Google"
+                android:textColor="@color/text_primary"
+                android:textSize="14.5sp"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconSize="20dp"
+                app:iconTint="@null"
+                app:strokeColor="#CBD5E1"
+                app:strokeWidth="1.2dp" />
+
             <TextView
                 android:id="@+id/tvSwitchToSignUp"
                 android:layout_width="wrap_content"
@@ -283,6 +334,57 @@
                 android:layout_height="54dp"
                 android:layout_marginTop="14dp"
                 android:text="@string/sign_up" />
+
+            <!-- OR Divider -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="OR"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/divider" />
+            </LinearLayout>
+
+            <!-- Continue with Google Button (Sign Up) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoogleSignUp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:fontFamily="sans-serif-bold"
+                android:text="Continue with Google"
+                android:textColor="@color/text_primary"
+                android:textSize="14.5sp"
+                app:cornerRadius="14dp"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconSize="20dp"
+                app:iconTint="@null"
+                app:strokeColor="#CBD5E1"
+                app:strokeWidth="1.2dp" />
 
             <TextView
                 android:id="@+id/tvSwitchToLogin"

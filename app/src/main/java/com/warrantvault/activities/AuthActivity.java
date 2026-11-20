@@ -1,5 +1,6 @@
 package com.warrantvault.activities;
 
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,9 +13,17 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,6 +41,24 @@ public class AuthActivity extends AppCompatActivity {
     private UserDAO userDAO;
     private SessionManager sessionManager;
     private boolean isLoginSelected = true;
+
+    private final ActivityResultLauncher<Intent> googleSignInLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                handleGoogleSignInResult(task);
+            });
+
+    private final ActivityResultLauncher<Intent> accountPickerLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    String email = result.getData().getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+                    if (email != null && !email.trim().isEmpty()) {
+                        String name = email.split("@")[0];
+                        name = Character.toUpperCase(name.charAt(0)) + name.substring(1);
+                        processGoogleUser(email, name);
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +167,87 @@ public class AuthActivity extends AppCompatActivity {
         binding.btnLogin.setOnClickListener(v -> handleLogin());
         binding.btnSignUp.setOnClickListener(v -> handleSignUp());
         binding.tvForgotPassword.setOnClickListener(v -> showForgotPasswordDialog());
+        binding.btnGoogleSignIn.setOnClickListener(v -> launchGoogleSignIn());
+        binding.btnGoogleSignUp.setOnClickListener(v -> launchGoogleSignIn());
+    }
+
+    private void launchGoogleSignIn() {
+        try {
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .requestProfile()
+                    .build();
+            GoogleSignInClient client = GoogleSignIn.getClient(this, gso);
+            // Sign out to ensure the account chooser is always displayed
+            client.signOut().addOnCompleteListener(task -> {
+                Intent signInIntent = client.getSignInIntent();
+                googleSignInLauncher.launch(signInIntent);
+            });
+        } catch (Exception e) {
+            fallbackAccountPicker();
+        }
+    }
+
+    private void handleGoogleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            if (account != null) {
+                String email = account.getEmail();
+                String displayName = account.getDisplayName();
+                if (displayName == null || displayName.trim().isEmpty()) {
+                    displayName = (account.getGivenName() != null) ? account.getGivenName() : "Google User";
+                }
+                processGoogleUser(email, displayName);
+            }
+        } catch (ApiException e) {
+            // If user did not cancel and play services failed, try account picker fallback
+            if (e.getStatusCode() != 12501 && e.getStatusCode() != 12502) {
+                fallbackAccountPicker();
+            }
+        }
+    }
+
+    private void fallbackAccountPicker() {
+        try {
+            Intent intent = AccountManager.newChooseAccountIntent(
+                    null,
+                    null,
+                    new String[]{"com.google"},
+                    false,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+            accountPickerLauncher.launch(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Could not launch Google Sign In", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void processGoogleUser(String email, String displayName) {
+        if (email == null || email.trim().isEmpty()) {
+            Toast.makeText(this, "Could not retrieve Google account email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        User user = userDAO.getUserByEmail(email);
+        long userId;
+        if (user != null) {
+            userId = user.getId();
+            displayName = user.getFullName();
+        } else {
+            User newUser = new User(displayName, email, "", DateUtils.getTodayDb());
+            userId = userDAO.registerUser(newUser, "GOOGLE_AUTH_" + System.currentTimeMillis());
+        }
+
+        if (userId != -1) {
+            sessionManager.createLoginSession(userId, displayName, email);
+            Toast.makeText(this, "Welcome, " + displayName + "!", Toast.LENGTH_SHORT).show();
+            navigateToMain();
+        } else {
+            Toast.makeText(this, "Failed to sign in with Google", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void handleLogin() {
