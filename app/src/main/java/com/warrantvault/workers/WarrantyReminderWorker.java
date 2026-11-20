@@ -18,6 +18,7 @@ import com.warrantvault.models.Product;
 import com.warrantvault.utils.DateUtils;
 import com.warrantvault.utils.NotificationUtils;
 import com.warrantvault.utils.SessionManager;
+import com.warrantvault.utils.WarrantyUtils;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -46,6 +47,11 @@ public class WarrantyReminderWorker extends Worker {
 
         List<Product> products = productDAO.getAllProducts(userId);
         for (Product product : products) {
+            // Skip products marked with No Warranty
+            if (WarrantyUtils.STATUS_NO_WARRANTY.equals(product.getStatus())) {
+                continue;
+            }
+
             long days = product.getDaysRemaining();
 
             boolean shouldNotify = false;

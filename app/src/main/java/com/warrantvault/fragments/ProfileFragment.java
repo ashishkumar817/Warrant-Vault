@@ -16,6 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.warrantvault.activities.AuthActivity;
 import com.warrantvault.dao.ProductDAO;
 import com.warrantvault.databinding.FragmentProfileBinding;
+import com.warrantvault.utils.NotificationUtils;
 import com.warrantvault.utils.SessionManager;
 
 public class ProfileFragment extends Fragment {
@@ -77,6 +78,16 @@ public class ProfileFragment extends Fragment {
             binding.switchRemind14.setEnabled(isChecked);
             binding.switchRemind7.setEnabled(isChecked);
             binding.switchRemind1.setEnabled(isChecked);
+
+            if (isChecked) {
+                NotificationUtils.showNotification(
+                        requireContext(),
+                        9999,
+                        -1,
+                        "Warrant Vault Alerts Active",
+                        "Notifications are working! You will receive reminders before warranties expire."
+                );
+            }
         });
 
         binding.switchRemind30.setOnCheckedChangeListener((btn, isChecked) -> sessionManager.setRemind30(isChecked));

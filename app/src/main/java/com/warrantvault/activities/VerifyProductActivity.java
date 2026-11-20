@@ -29,6 +29,7 @@ import com.warrantvault.models.NotificationItem;
 import com.warrantvault.models.Product;
 import com.warrantvault.models.Warranty;
 import com.warrantvault.utils.DateUtils;
+import com.warrantvault.utils.NotificationUtils;
 import com.warrantvault.utils.SessionManager;
 import com.warrantvault.utils.WarrantyUtils;
 
@@ -453,6 +454,15 @@ public class VerifyProductActivity extends AppCompatActivity {
                 notificationDAO.insertNotification(new NotificationItem(
                         newId, "Product Added", name + " was added to your Warrant Vault.", DateUtils.getTodayDisplay(), false
                 ));
+
+                // Show Android system push notification if notifications enabled
+                if (sessionManager.isNotificationsEnabled()) {
+                    String notifyTitle = isNoWarranty ? "Product Protected" : "Warranty Active";
+                    String notifyMsg = isNoWarranty
+                            ? name + " has been added to your Warrant Vault."
+                            : name + " is now covered until " + warrantyEndDate + ". We'll remind you before expiry.";
+                    NotificationUtils.showNotification(this, (int) newId, newId, notifyTitle, notifyMsg);
+                }
 
                 Toast.makeText(this, "Product saved successfully!", Toast.LENGTH_SHORT).show();
 

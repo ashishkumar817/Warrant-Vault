@@ -1,8 +1,14 @@
 package com.warrantvault.activities;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,6 +20,7 @@ import com.warrantvault.fragments.AlertsFragment;
 import com.warrantvault.fragments.HomeFragment;
 import com.warrantvault.fragments.ProfileFragment;
 import com.warrantvault.fragments.VaultFragment;
+import com.warrantvault.utils.NotificationUtils;
 import com.warrantvault.workers.WarrantyReminderWorker;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,17 +32,37 @@ public class MainActivity extends AppCompatActivity {
     private final ProfileFragment profileFragment = new ProfileFragment();
     private Fragment activeFragment = homeFragment;
 
+    private final ActivityResultLauncher<String> notificationPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    NotificationUtils.createNotificationChannel(this);
+                }
+            });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Create channel & request runtime permission on Android 13+ (API 33+)
+        NotificationUtils.createNotificationChannel(this);
+        checkNotificationPermission();
+
         // Ensure periodic warranty notifications worker is running
         WarrantyReminderWorker.schedulePeriodicReminders(this);
 
         setupFragments();
         setupNavigation();
+    }
+
+    private void checkNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+            }
+        }
     }
 
     private void setupFragments() {
